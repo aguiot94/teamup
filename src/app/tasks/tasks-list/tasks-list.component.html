@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-xs-12">
+      <h2>Tâches restantes à effectuer</h2>
+      <div class="list-group">
+        <button
+          class="list-group-item"
+          *ngFor="let task of tasks; let i = index"
+          (click)="onViewTask(i)">
+          <h3 class="list-group-item-heading">
+            {{ task.titre }}
+            <button class="btn btn-default pull-right" (click)="onDeleteTask(task)">
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+          </h3>
+          <p class="list-group-item-text">{{ task.description }}</p>
+        </button>
+      </div>
+      <button class="btn btn-primary" (click)="onNewTask()">Ajouter une tâche</button>
+    </div>
+  </div>

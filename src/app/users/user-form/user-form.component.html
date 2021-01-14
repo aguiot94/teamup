@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2>Enregistrer mes informations</h2>
+
+      <form [formGroup]="userForm" (ngSubmit)="onSaveUser()">
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom"
+                 class="form-control" formControlName="nom">
+        </div>
+        <div class="form-group">
+          <label for="prenom">Prénom</label>
+          <input type="text" id="prenom"
+                 class="form-control" formControlName="prenom">
+        </div>
+        <div class="form-group">
+          <label for="mail">Adresse e-mail</label>
+          <input id="mail"
+                    class="form-control" formControlName="mail">
+        </div>
+        <div class="form-group">
+            <label for="telephone">Téléphone</label>
+            <input id="telephone"
+                      class="form-control" formControlName="telephone">
+          </div>
+          <div class="form-group">
+            <h4>Ajouter une photo</h4>
+            <input type="file" (change)="detectFiles($event)"
+                   class="form-control" accept="image/*">
+            <p class="text-success" *ngIf="fileIsUploaded">Fichier chargé !</p>
+        </div>
+        <button class="btn btn-success" [disabled]="userForm.invalid || fileIsUploading"
+                type="submit">Enregistrer
+        </button>
+  
+      </form>
+    </div>
+  </div>

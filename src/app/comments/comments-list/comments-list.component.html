@@ -1,0 +1,9 @@
+<div class="row">
+    <h2>Commentaires de ce projet</h2>
+    <div class="list-group">
+        <div class="list-group-item" *ngFor = 'let comment of comments; let i = index'>
+            <h3>{{ comment.userName }} <br>le {{ comment.time }}</h3>
+            <p>{{ comment.content }}</p>
+        </div>
+    </div>
+</div>

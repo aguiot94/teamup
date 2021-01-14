@@ -1,0 +1,175 @@
+.demo-chip-list {
+    width: 100%;
+  }
+
+  h2.form-title {
+    font-family:'Nerko One';
+    font-size:30px;
+    text-align:center;
+  }
+
+  h4.subtitle, label   {
+    font-family:'Montserrat';
+  }
+
+  /*Hide the tabs by default*/
+.tab {
+  display: none;
+}
+
+  /* Make circles that indicate the steps of the form: 
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}*/
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: 
+.step.finish {
+  background-color: #4CAF50;
+}*/
+
+.row.new-project-form {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/*Style the form*/
+.form-control {
+  border-radius: 10px;
+  border: 1px solid whitesmoke;
+  outline:none;
+}
+
+input.blue-shadow, textarea.blue-shadow {
+  box-shadow: 0px 2px 9px 0px rgb(66 138 197 / 26%);
+}
+
+/*Steps*/
+.steps-wrapper {
+  padding: 60px 0px;
+}
+
+/*progressbar*/
+#progressbar {
+	margin-bottom: 30px;
+	overflow: hidden;
+	/*CSS counters to number the steps*/
+	counter-reset: step;
+}
+#progressbar li {
+	list-style-type: none;
+	color: white;
+	text-transform: uppercase;
+	font-size: 9px;
+	width: 25%;
+	float: left;
+	position: relative;
+}
+#progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 20px;
+	line-height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	font-size: 10px;
+	color: #333;
+	background: #ececec;
+  border-radius: 10px;
+	margin: 0 auto 5px auto;
+}
+/*progressbar connectors*/
+#progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background:#ececec;
+	position: absolute;
+	left: -50%;
+	top: 9px;
+  z-index: -1; /*put it behind the numbers*/
+}
+#progressbar li:first-child:after {
+	/*connector not needed before the first step*/
+	content: none; 
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before,  #progressbar li.active:after, #progressbar li.finish:before,  #progressbar li.finish:after{
+	background: rgb(58,158,225);
+  background: linear-gradient(90deg, rgba(58,158,225,1) 0%, rgba(1,110,184,1) 100%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+mat-chip.mat-chip.mat-focus-indicator.mat-primary.mat-standard-chip.mat-chip-with-trailing-icon.ng-star-inserted {
+  background: transparent;
+  border: 1px solid #3a9ee1;
+}
+
+button#prevBtn {
+  margin-right: 20px;
+}
+
+.task-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.task-index {
+  background: #3a9ee1;
+  color: white;
+  font-family: 'Montserrat';
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+
+.task{
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 4px 3px 17px -9px rgb(153 153 153 / 60%);
+  width: 90%;
+}
+
+.task h2 {
+  font-size: 14px;
+  color: #3a9ee1;
+}
+
+h3.tasks-to-do {
+  font-family: 'Nerko One';
+  font-size: 25px;
+}
+
+a.btn-blue {
+  background: #facf48;
+  color: white;
+  font-family: 'Montserrat';
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}

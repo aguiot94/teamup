@@ -1,0 +1,33 @@
+.content-wrapper {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.global-content{
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+}
+
+button.btn-blue {
+    background: #3a9ee1;
+    border: none;
+    color: #fff;
+    padding: 5px 15px;
+    font-family: 'Montserrat';
+    border-radius: 18px;
+    font-size: 12px;
+    outline:none;
+}
+
+button.btn-blue:hover {
+    background: #3795d4;
+    transition: background 300ms;
+}
+
+.blue-shadow {
+    -webkit-box-shadow: 10px 10px 53px -31px rgba(156,198,224,1);
+    -moz-box-shadow: 10px 10px 53px -31px rgba(156,198,224,1);
+    box-shadow: 10px 10px 53px -31px rgba(156,198,224,1);
+}

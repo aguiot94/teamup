@@ -1,0 +1,79 @@
+img#logo-vertical {
+    width: 60px;
+}
+
+.vertical-header-wrapper {
+    background: #3a9ee1;
+    border-radius: 10px;
+    box-shadow: 16px -15px 36px -5px rgb(175 175 175 / 48%);
+    height: 90%;
+    padding-top:30px;
+    position: sticky;
+    top: 30px;
+}
+
+.logo {
+    height:20%;
+    margin-top:30px;
+    text-align:center;
+}
+
+a {
+    font-family: 'Montserrat';
+}
+
+input#search-projects{
+    font-family: 'FontAwesome', 'Montserrat';
+    outline:none;
+    border-radius: 20px;
+    border: none;
+    padding:10px;
+    font-size:13px;
+}
+
+input#search-projects::placeholder {
+    padding-left: 5px;
+}
+
+ul.side-filters, ul.side-buttons {
+    list-style:none;
+    padding-left:10px;
+}
+
+ul.side-filters li {
+    margin-bottom: 20px;
+}
+
+h3.side-skills-title {
+    font-family:'Montserrat';
+    color:#fff;
+    font-weight: 600;
+}
+
+ul.side-filters label {
+    color: #fff;
+    padding-left: 5px;
+}
+
+img#home-button {
+    width: 35px;
+}
+
+ul.side-buttons li {
+    text-align: center;
+    padding-top:20px;
+    padding-bottom: 20px;
+}
+
+ul.side-buttons {
+    padding-bottom: 40px;
+}
+
+.vertical-header-wrapper .active {
+    background: #facf48;
+    padding: 32px 15px 10px 15px;
+    border-radius: 7px;
+    -webkit-box-shadow: 3px 3px 18px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 18px -5px rgba(0,0,0,0.75);
+    box-shadow: -1px 0px 4px 0px rgb(130 126 126 / 49%);
+}

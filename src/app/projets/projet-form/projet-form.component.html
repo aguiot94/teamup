@@ -1,0 +1,106 @@
+<div class="row new-project-form">
+
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2 class="form-title">Enregistrer un nouveau projet</h2>
+
+      <div class="steps-wrapper">
+        <ul id="progressbar">
+          <li class="step"></li>
+          <li class="step"></li>
+          <li class="step"></li>
+          <li class="step"></li>
+        </ul>
+      </div> 
+
+      <form [formGroup]="projetForm" (ngSubmit)="onSaveProjet()">
+        <div class="tab">
+          <div class="form-group">
+            <label for="titre">Titre</label>
+            <input type="text" id="titre"
+                  class="form-control blue-shadow" formControlName="titre">
+            <p *ngIf='!formIsValid' class="danger">Ce nom existe déjà, veuillez en choisir un autre.</p>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description"
+                      class="form-control blue-shadow" formControlName="description">
+            </textarea>
+          </div>
+          <div class="form-group">
+            <h4 class="subtitle">Ajouter une photo à la une de votre projet</h4>
+            <input type="file" (change)="detectFiles($event)" accept="image/*">
+            <p class="text-success" *ngIf="fileIsUploaded">Fichier chargé !</p>
+        </div>
+        </div>
+
+        <div class="tab">
+          <mat-form-field class="demo-chip-list">
+              <mat-chip-list #chipList>
+                <mat-chip
+                  *ngFor="let skill of skills"
+                  [selectable]="selectable"
+                  [removable]="removable"
+                  (removed)="remove(skill)">
+                  {{skill}}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input
+                  placeholder="Quelles sont les compétences dont vous avez besoin ?"
+                  #skillInput
+                  [formControl]="skillsCtrl"
+                  [matAutocomplete]="auto"
+                  [matChipInputFor]="chipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="addOnBlur"
+                  (matChipInputTokenEnd)="add($event)"
+                  formControlName="competences"
+                  
+                />
+              </mat-chip-list>
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let skill of allSkills" [value]="skills">
+                  {{ skill }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+
+          <div class="tab">
+            <h3 class="tasks-to-do">Les tâches à effectuer</h3>
+            <div class="task-wrapper" *ngFor="let task of tasks; let i = index;">
+              <div class="task-index">{{ i + 1 }}</div>
+              <div class="task">
+                <h2>{{ task.titre }}</h2>
+                <p>{{ task.description }}</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="titreTache">Titre</label>
+              <input type="text" id="titre_tache"
+                    class="form-control blue-shadow" formControlName="titreTache">
+            </div>
+            <div class="form-group">
+              <label for="descriptionTache">Description</label>
+              <textarea id="description_tache"
+                        class="form-control blue-shadow" formControlName="descriptionTache">
+              </textarea>
+            </div>
+            <a class='btn-blue' (click)="onAddTask()"><i class="fas fa-plus-circle"></i> Ajouter</a>
+            <p class="danger" *ngIf="!taskCanBeSent">Les deux champs doivent être remplis !</p>
+          </div>
+          <div class="tab">
+          <button class="btn btn-success" 
+                  type="submit">Enregistrer
+          </button>
+         </div> 
+
+         <div style="overflow:auto;">
+          <div style="float:right;">
+            <button type="button" id="prevBtn" class="btn-blue" (click)="nextPrev(-1)">Précédent</button>
+            <button type="button" id="nextBtn" class="btn-blue" (click)="nextPrev(1)">Suivant</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>

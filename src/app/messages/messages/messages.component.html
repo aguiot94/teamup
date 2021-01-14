@@ -1,0 +1,16 @@
+<div class="message-view">
+    <div class="message" 
+    *ngFor="let message of conversation;"
+    [ngClass]="{
+        'blue-message' : message.senderID == userID,
+        'grey-message' : message.senderID != userID
+    }">
+    <img src="{{ otherUser.photo }}" alt="user photo" class="other-user-photo" *ngIf="message.senderID != userID">
+    <p>{{ message.content }}</p>
+    <img src="{{ user.photo }}" alt="user photo" class="current-user-photo" *ngIf="message.senderID == userID">
+    </div>
+    <div class="input-field">
+        <input type="text" [(ngModel)]="message" placeholder="Écrivez votre message ..." id="message-input" (keyup.enter)="onSendMessage(otherUserID)">
+        <button (click)="onSendMessage(otherUserID)" class="btn-send"><i class="far fa-paper-plane"></i></button>
+    </div>  
+</div>

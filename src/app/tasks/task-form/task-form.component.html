@@ -1,0 +1,13 @@
+<form [formGroup]="taskForm">
+    <div formArrayName="tasks" *ngFor="let a of taskForm.get('tasks')['controls']; let i = index">
+      <div [formGroupName]="i" style="margin-bottom: 10px;">
+        <label for="titre">Titre:</label>
+        <input type="text" name="titre" formControlName="titre">
+        <br><br>
+        <label for="description">Description</label>
+        <input type="text" name="description" formControlName="description">
+      </div>
+    </div>
+    <br>
+    <button type="button" (click)="addItem()" style="margin-right: 5px;">Ajouter</button>
+  </form>

@@ -1,0 +1,56 @@
+<div class="row project-list-component">
+    <div class="projects-list"
+         [ngClass]="{'col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-8' : projectOpened,
+                     'col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12' : !projectOpened
+                    }">
+      <input type="text" id="search-bar" placeholder="&#xf002;    Titre, compétences ..." [(ngModel)]="searchText" >
+      <div class="list">
+        <button
+          class="project-item"
+          *ngFor="let projet of allProjets | searchFilter : searchText; let i = index"
+          [class.active] = "selectedIndex === i"
+          (click)="toggleProject(projet, i)"> 
+          <div class="project-item-single">
+          <div class="bloc-img col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <img src="{{ projet.photo }}" alt="project picture" class="project-picture">
+          </div>
+
+          <div class="bloc-infos col-xl-9 col-lg-9 col-md-9 col-sm-9 col-xs-9">
+            <h3 class="list-group-item-heading">
+              {{ projet.titre}}
+            </h3>
+            <p>Par <img src="{{ projet.userPhoto }}" alt="user picture" id="user_photo"> {{ projet.userName }}</p>
+            <p class="list-group-item-text">{{ projet.description }}</p>
+            <h4 class="skills-title">Compétences recherchées</h4>
+            <ul class="skills">
+              <li *ngFor="let competence of projet.competencesRecherchees">
+                  {{ competence }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="projectOpened" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 project-preview" [@slideInRight]>
+      <img src="{{ projectToDisplay.photo }}" alt="project picture" class="project-picture-preview">
+      <h2 class="title-preview">{{ projectToDisplay.titre }}</h2>
+      <button (click)="onSendRequest(projectToDisplay)" class="btn-blue btn-join">Rejoindre</button>
+      <button (click)="onSendMessage(projectToDisplay.userID)" class="btn-blue btn-join">Message</button>
+      <p class="request-sent"  *ngIf="requestSent">Demande envoyée !</p>
+      <img src="{{ projectToDisplay.userPhoto }}" alt="user photo" id="user-photo-project">
+      <h3 class="description-title">En quoi consiste le projet ?</h3>
+      <p>{{ projectToDisplay.description }}</p>
+      <h3 class="description-title">Nous avons besoin d'aide pour :</h3>
+      <ul class="tasks-left">
+        <li class="task" *ngFor="let task of projectToDisplay.tachesAFaire">
+          <h5 class="task-title">{{ task.titre }}</h5>
+          <p>{{ task.description }}</p>
+        </li>
+      </ul>
+      <h3 class="description-title">Les compétences que nous recherchons :</h3>
+      <ul class="skills-wanted">
+        <li class="skill-wanted" *ngFor="let skill of projectToDisplay.competencesRecherchees">{{ skill }}</li>
+        </ul>  
+    </div>
+  </div>

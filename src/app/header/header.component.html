@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a routerLink="projets" class="menu-item">Projets</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="gotNotification">
+        <button (click)="onViewNotification()" class="exclude_outside_click"><i class="icon-bell-alt exclude_outside_click"></i> {{ numberOfNotifications }}</button>
+      </li>
+      <li routerLinkActive="active" *ngIf="isAuth">
+        <a routerLink="user/account" class="menu-item">Mon compte</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="!isAuth">
+        <a routerLink="auth/signup" class="menu-item">Créer un compte</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="!isAuth">
+        <a routerLink="auth/signin" class="menu-item">Connexion</a>
+      </li>
+      <li>
+        <a (click)="onSignOut()"
+           style="cursor:pointer"
+           *ngIf="isAuth"
+           class="menu-item">Déconnexion</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="notification-box" [exclude]=" '.exclude_outside_click' " (clickOutside)="onClickedOutside($event)">
+  <h3>Notifications</h3>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let notification of notifications; let i=index">
+      <div class="user-notification">
+        <img src="{{notification.userPicture}}" alt="user picture" id="user_picture" (click)="onViewSingleNotification(notification.senderID)">
+        <a style="color:black;" (click)="onViewSingleNotification(notification.senderID)" id="notification_content">{{notification.content}}</a><br>
+      </div>
+      <div class="notification-buttons">
+        <button  (click)="onAcceptRequest(notification.projectID, notification.senderID, notification)"><img src="/assets/check.png" alt="chek button" class="notification_button"></button>
+        <button  (click)="onDenieRequest(notification)"><img src="/assets/remove.png" alt="remove button" class="notification_button"></button>
+      </div>
+    </li>
+  </ul>
+</div>
